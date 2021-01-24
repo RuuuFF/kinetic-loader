@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2c3e50;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kinetic {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.kinetic::before,
+.kinetic::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 50px solid transparent;
+  border-bottom-color: #fff;
+  animation: rotateA 2s linear infinite 0.5s; 
+  /* nome da animação || duração da animação || tipo da animação || repetição || delay */
+}
+
+.kinetic::after {
+  transform: rotate(90deg);
+  animation: rotateB 2s linear infinite;
+}
+
+/* Animação do triângulo de baixo */
+@keyframes rotateA {
+  /* fica de 0% até 25% parado (0.5s) */
+  0%, 25% {
+    transform: rotate(0deg);
+  }
+  
+  /* de 50% até 75% parado em cima (0.5s) */
+  50%, 75% {
+    transform: rotate(180deg);
+  }
+  
+  /* volta para a posição original (embaixo) */
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Animação do triângulo da esquerda */
+@keyframes rotateB {
+  /* fica de 0% até 25% parado (0.5s) */
+  0%, 25% {
+    transform: rotate(90deg); /* 90 */
+  }
+  
+  /* de 50% até 75% parado na direita (0.5s) */
+  50%, 75% {
+    transform: rotate(270deg); /* 90 + 180 = 270 */
+  }
+  
+  /* volta a posição original (esquerda) */
+  100% {
+    transform: rotate(450deg); /* 270 + 180 = 450 */
+  }
+}
